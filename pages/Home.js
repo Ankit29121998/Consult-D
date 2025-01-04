@@ -9,7 +9,7 @@ const Home = ({ navigation }) => {
     <View style={styles.container}>
       <Text style={styles.title}>Choose Your Role </Text>
 
-      <TouchableOpacity onPress={() => navigation.navigate("UserRegistration")}>
+      <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate("UserRegistration")}>
         <UserClientIcon />
         </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate("ServiceProviderRegistration")}>
@@ -30,6 +30,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 20,
   },
+  iconContainer:{
+   marginBottom:20, 
+  }
 });
 
 export default Home;

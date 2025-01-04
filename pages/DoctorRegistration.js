@@ -7,7 +7,7 @@ const UserRegistration=({navigation})=> {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    languages: '',
+    email: '',
   });
 
 
@@ -24,16 +24,16 @@ const UserRegistration=({navigation})=> {
       setImageUri(result.uri);
     }
   };
+  
   const handleInputChange = (field, value) => {
     setFormData((prevData) => ({
       ...prevData,
       [field]: value,
     }));
   };
- 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.header}>Client Registration Process</Text>
+        <Text style={styles.header}>Doctor Registration Process</Text>
         <TouchableOpacity style={styles.imagePicker} onPress={pickImage}>
         {imageUri ? (
           <Image source={{ uri: imageUri }} style={styles.image} />
@@ -64,20 +64,55 @@ const UserRegistration=({navigation})=> {
           />
         </View>
       </View>
+      <View style={styles.radioGroup}>
+        <Text style={styles.label}>Gender</Text>
+        <View style={styles.radioOptionsField}>
+        <View style={styles.radioOption}>
+          <TouchableOpacity
+            style={[
+              styles.radioButton,
+              formData.gender === 'Male' && styles.radioButtonSelected,
+            ]}
+            onPress={() => handleInputChange('gender', 'Male')}
+          />
+          <Text onPress={() => handleInputChange('gender', 'Male')} style={styles.radioLabel}>Male</Text>
+        </View>
+        <View style={styles.radioOption}>
+          <TouchableOpacity
+            style={[
+              styles.radioButton,
+              formData.gender === 'Female' && styles.radioButtonSelected,
+            ]}
+            onPress={() => handleInputChange('gender', 'Female')}
+          />
+          <Text  onPress={() => handleInputChange('gender', 'Female')} style={styles.radioLabel}>Female</Text>
+        </View>
+        <View style={styles.radioOption}>
+          <TouchableOpacity
+            style={[
+              styles.radioButton,
+              formData.gender === 'Other' && styles.radioButtonSelected,
+            ]}
+            onPress={() => handleInputChange('gender', 'Other')}
+          />
+          <Text style={styles.radioLabel}  onPress={() => handleInputChange('gender', 'Other')} >Other</Text>
+        </View>
+        </View>
+      </View>
       <View style={styles.inputRow}>
       <View style={styles.inputContainer}>
-          <Text style={styles.label}>Add Languages </Text>
+          <Text style={styles.label}>Email</Text>
           <TextInput
             style={styles.input}
-            placeholder="Add Languages"
-            value={formData.languages}
-            onChangeText={(value) => handleInputChange('languages', value)}
+            placeholder="Email"
+            value={formData.lastName}
+            onChangeText={(value) => handleInputChange('email', value)}
           />
         </View>
           </View>
 
 
-    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate("UserRegistrationSuccessful")}>
+    <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate("RegistrationUnderReview")}>
       <View style={styles.button}>
           <Text style={styles.buttonText}>Next</Text>
         </View>
@@ -184,6 +219,35 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 500,
   },
+  radioGroup: {
+    width: '100%',
+    marginBottom: 20,
+  },
+  radioOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 25,
+  },
+  radioButton: {
+    height: 24,
+    width: 24,
+    borderRadius: '50%',
+    borderWidth: 1,
+    borderColor: '#C2C8CC',
+    marginRight: 5,
+  },
+  radioButtonSelected: {
+    backgroundColor: '#2C85C7',
+  },
+  radioLabel: {
+    fontSize: 16,
+    color: '#39434C',
+  },
+  radioOptionsField:{
+    display:'flex',
+    flexDirection:'row',
+
+  }
 });
 
 export default UserRegistration;
