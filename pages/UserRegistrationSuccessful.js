@@ -7,7 +7,7 @@ const UserRegistrationSuccessful = ({ navigation }) => {
     <View style={styles.container}>
       <SuccessIcon />
       <Text style={styles.title}>Registration Successful</Text>
-      <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate("Home")}>
+      <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate("UserServicesPage")}>
       <View style={styles.button}>
           <Text style={styles.buttonText}>Done</Text>
         </View>
