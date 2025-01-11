@@ -1,14 +1,26 @@
 import React from 'react';
-import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet,TouchableOpacity,TextInput } from 'react-native';
 import professionIcons from '../profession-mapping';
 import GetLocation from '../../Location';
-const Header = ({profession='Doctors',setProfession=()=>{}}) => {
+import SearchIcon from '../../../assets/SearchIcon';
+const Header = ({profession='Doctors',setProfession=()=>{},searchQuery='',setSearchQuery=()=>{}}) => {
   const handlePress = (professionName) => {
     setProfession(professionName);
   };
     return(
         <View style={styles.screen}>
           <GetLocation />
+          <View style={styles.searchWrapper}>
+            <SearchIcon />
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search Professions/Categories"
+          value={searchQuery}
+          onChangeText={(val)=>setSearchQuery(val)}
+
+        />
+        {/* <Ionicons name="mic-outline" size={20} color="#666" /> */}
+      </View>
         <Text style={styles.text}>What are you looking for?</Text>
         <View style={styles.iconContainer}>
         {professionIcons.map((item,index)=>{
@@ -67,6 +79,19 @@ const styles = StyleSheet.create({
       height: 50, 
       justifyContent: 'center',
       alignItems: 'center',
+    },
+    searchWrapper: {
+      backgroundColor: '#fff',
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingHorizontal: 8,
+      paddingVertical: 4,
+      borderRadius: 8,
+      shadowColor: '#000',
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      elevation: 2,
+
     },
 })
   export default Header;

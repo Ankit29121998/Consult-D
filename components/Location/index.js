@@ -34,10 +34,14 @@ const GetLocation = () => {
   }, []);
   return (
     <View >
+
+
         <Text >
+          Your Current Location:
            {address?.district},
           {address?.city},
-          {address?.country}
+          {address?.country},
+          {address?.postalCode}
    
         </Text>
      

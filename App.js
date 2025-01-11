@@ -9,12 +9,23 @@ import DoctorRegistration from "./pages/DoctorRegistration";
 import RegistrationUnderReview from "./pages/RegistrationUnderReview";
 import UserServicesPage from "./pages/UserServicesPage";
 import About from './pages/About';
+import SignUp from './pages/SignUp';
+import SignUpOtpPage from "./pages/SignUpOtpPage";
+import SignUpWithOtp from "./pages/SignUpWithOtp";
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="SignUp">
+      <Stack.Screen name="SignUp" component={SignUp}  options={{ headerShown: false }} />
+      <Stack.Screen name="SignUpOtpPage" component={SignUpOtpPage}  options={{
+        headerShown: true, 
+        title: '',          
+    }}  />
+     <Stack.Screen name="SignUpWithOtp" component={SignUpWithOtp}  options={{
+         headerShown: false       
+    }}  />
         <Stack.Screen name="Home" component={Home}  options={{ headerShown: false }} />
         <Stack.Screen name="UserRegistration" component={UserRegistration} options={{ title: 'Step 1 of 1' }} />
         <Stack.Screen name="UserRegistrationSuccessful" component={UserRegistrationSuccessful} options={{ headerShown: false }} />

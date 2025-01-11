@@ -19,15 +19,20 @@ const doctorCategoriesMapping = [
   {name:'Skin & Hair', Component: SkinHair },
   {name:'Kidney Issues', Component: KidneyIssues },
   {name:'Ayurveda', Component: Ayurveda },
-  {name:'Cardiologist', Component: Cardiologist },
+  {name:'Mental Wellness', Component: Cardiologist },
  
   {name:'Homoeopath', Component: Homoeopath },
-  {name:'Cardiologist', Component: Cardiologist },
-  {name:'Cardiologist', Component: Cardiologist },
-  {name:'Cardiologist', Component: Cardiologist },
-  {name:'Cardiologist', Component: Cardiologist },
-  {name:'Cardiologist', Component: Cardiologist },
-  {name:'Cardiologist', Component: Cardiologist },
+  {name:'Ear,Nose,Throat', Component: Cardiologist },
+  {name:'Brain & Nerves', Component: Cardiologist },
+  {name:'Veterinary', Component: Cardiologist },
+  {name:'Diabetes Management', Component: Cardiologist },
+  {name:'Lungs & Breathing', Component: Cardiologist },
+  {name:'Urinary Issues', Component: Cardiologist },
+  {name:'Physiotheraphy', Component: Cardiologist },
+  {name:'Child Specialist', Component: Cardiologist },
+  {name:'Sexual Health', Component: Cardiologist },
+  {name:'Woman`s Health', Component: Cardiologist },
+  {name:'Unani', Component: Cardiologist },
 ];
 
 export default doctorCategoriesMapping;
