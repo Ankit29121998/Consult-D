@@ -1,29 +1,35 @@
 import React from 'react';
-
-import Svg, { G,Image,Defs,Pattern,Mask,Rect,Use } from 'react-native-svg';
+import Svg, { Circle, Line } from 'react-native-svg';
 
 const SearchIcon = () => {
-    return (
-        
-<Svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg" >
-<Mask id="mask0_1_9128" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="18" height="19">
-<Rect y="0.0625" width="18" height="18" fill="url(#pattern0_1_9128)"/>
-</Mask>
-<G mask="url(#mask0_1_9128)">
-<Rect x="-8.54688" y="-1.6958" width="40.8372" height="27.7597" fill="red"/>
-</G>
-<Defs>
-<Pattern id="pattern0_1_9128" patternContentUnits="objectBoundingBox" width="1" height="1">
-<Use href="#image0_1_9128" transform="scale(0.015625)"/>
-</Pattern>
-<Image id="image0_1_9128" width="64" height="64" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAASYAAAEmAFRjg5XAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAX1QTFRF////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAc0IzEgAAAH50Uk5TAAECAwQFBwgJCg8UFhcZGhwfICIjJCUnKi4vMTI0Nzk6Oz0/QkRGR0lOU1VZWl1gYWRpamxzdXZ4eXx/gIGEhoqMlpiZmp2foKGjpKusra+wsbW3ubu8vb/BwsXGy8zOz9DS1NbX2Nnb3uDh4+Tl5ufp7/Dx8/T19vn7/P3+/CE00wAAAt9JREFUWMPtlldbWkEQhg8htlgiUYPGiiWxYY29oUSxxBoxKFawY+8KvL89F4fwLJ62PuQyc/nNzHuW3ZlhFEXHPnV55gJHD3f7/pmx9jzljVY+sodosWCfUz7b5j5Gx3YaJfO/7WJggSqJdOfvlJx4KmK+wCr/683f2Oh6f0uNIyOrqLZ1aCtJOKswz/8eTXx4pSNX1Au7NxKEx2aT9PcTiai1Sq2zYTvBHjQGJPJDDfqP03Kq+vsMz6/6f+YYBeSuq0XRZHB/UYD4sM34iBmTANyX6b7fDUC8zfyWBwGI6JW2+v7DVu88DcCUTv2pv99mBcgMAkRLNVe8CxDKsS7V/EuA5deyG4AGmV7pBMD1Sj0GWJNqNvuhTmw5QLxSrl2bAWIppa6MAKzIDowwQEeKtKeVTGwEYCll/gFEc6UHHsCT+GJdABvyQy8CIE44D0C/PMAL0C0IcwAt8oBegFFBCADUyAPcAD5BOAJwyAPqAFYF4QGIZ8gDSgDCgnAHkCUPcAKEBGEfoEgeUA/gFwQ/QK08oA1gVhBmAFrlAQMA44IwBjAkD/AB9AhCO8CWdP67a4BqQcmLARTKAlwAt3ZRCr4ublPzACymSH1vaUf7CUCXtjLkZmpiqj5/TBV3ALZtMvnZ53p/LY1Id3QvQEyzcwUATiWm2udbgAWNXgXAumVLfjgAePmi9cwDMGn1Ar8A0NtSCs4MXUL+DwA27XrOikcApjNNzq9+/75Y392sLoXBfMP7O1CXoKsSgwB1/eCyU/eE2b23yW3RiNAXUwMOtcugvfNc2FgNCU33iYjwSLnYvy7PScJxf2VOKIskvxLx9rrrSpz1bQO+66S4WVxyZk7Im4piaC+DdkWxIiilywbpsQW1/iwJimstpk1/nkr2jzVBye1YehKzbxe7xP6XIChKTmP3qG81HPLPjvdUvy4MKYKp/Sf8a4IjXcKEkibhQkmT4E0DoDgmLryFfwB/W63/zqmRNgAAAABJRU5ErkJggg=="/>
-</Defs>
-</Svg>
-
-
-
-
-    );
+  return (
+    <Svg
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Outer circle */}
+      <Circle
+        cx="12"
+        cy="12"
+        r="8"
+        stroke="#697C8C" // Adjust color here
+        strokeWidth="2"
+      />
+      {/* Handle */}
+      <Line
+        x1="17"
+        y1="17"
+        x2="24"
+        y2="24"
+        stroke="#697C8C" // Adjust color here
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </Svg>
+  );
 };
 
 export default SearchIcon;

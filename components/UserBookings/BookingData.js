@@ -7,14 +7,14 @@
 
 import React,{useState} from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import AppointmentBookModal from '../components/AppointmentBookModal';
+import CancelModal from '../CancelModal';
 
-const About = ({ navigation,route }) => {
-  const [modalVisible, setModalVisible] = useState(false);
+const BookingData = ({ navigation,route }) => {
+    const[modal,setModal]=useState(false);
   return (
     <View style={styles.card}>
       
-      {/* Profile and Name */}
+      <View style={styles.upperPart}>
       <View style={styles.header}>
         <Image
           source={{ uri: 'https://via.placeholder.com/50' }} // Replace with actual image URL
@@ -45,14 +45,12 @@ const About = ({ navigation,route }) => {
         </View>
       </View>
 
-      {/* Languages */}
       <View style={styles.languages}>
         <Text style={styles.language}>English</Text>
         <Text style={styles.language}>Hindi</Text>
         <Text style={styles.language}>Urdu</Text>
       </View>
 
-      {/* Pricing */}
       <View style={styles.pricing}>
         <View style={styles.priceBox}>
           <Text style={styles.priceLabel}>Call</Text>
@@ -63,18 +61,25 @@ const About = ({ navigation,route }) => {
           <Text style={styles.price}>₹ 15/Min</Text>
         </View>
       </View>
-
-     
-      {/* Buttons */}
-      <View style={styles.buttons}>
-        <TouchableOpacity style={styles.callButton} onPress={() => setModalVisible(true)} >
-          <Text style={styles.callButtonText}>Call/Chat</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bookButton}  onPress={() => navigation.navigate("BookVisitAppointment")}>
-          <Text style={styles.bookButtonText}>Book Visit</Text>
-        </TouchableOpacity>
       </View>
-     <AppointmentBookModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
+      {/* Profile and Name */}
+     
+      <View style={styles.line} />
+      <View style={styles.lowerPart}>
+      <View style={styles.textContainer}>
+        <Text style={styles.confirmed}>Appointment Confirmed</Text>
+        <Text>Tomorrow at 14:30pm</Text>
+      </View>
+      <TouchableOpacity  onPress={() => setModal(true)}>
+      <View style={styles.locationContainer}>
+          
+        <Text style={styles.modalText}>See Location</Text>
+  
+      </View>
+      </TouchableOpacity>
+    </View>
+    <CancelModal modalVisible={modal} setModalVisible={setModal}/>
+     
     </View>
   );
 };
@@ -83,13 +88,44 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: '#fff',
     borderRadius: 10,
-    padding: 15,
     margin: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
+  },
+  upperPart:{
+    paddingHorizontal:15,
+    paddingVertical:5
+  },
+  lowerPart:{
+    paddingHorizontal:15,
+    paddingVertical:5,
+    display:'flex',
+    flexDirection:'row',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap', 
+    width: '100%'
+
+  },
+  textContainer: {
+    flex: 1, // Takes up available space
+  },
+  locationContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 8,
+    backgroundColor:'#2C85C7',
+    borderRadius:4,
+  },
+  modalText:{
+    color:'#fff'
+  },
+  confirmed:{
+    color:'#00D965',
+    fontSize:16,
+
   },
   header: {
     flexDirection: 'row',
@@ -190,38 +226,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
-  buttons: {
-    flexDirection: 'row',
-    marginTop: 10,
-    justifyContent: 'space-between',
-  },
-  callButton: {
-    backgroundColor: '#27AE60',
-    borderRadius: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    flex: 1,
-    marginRight: 5,
-  },
-  callButtonText: {
-    color: '#fff',
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  bookButton: {
-    backgroundColor: '#2D9CDB',
-    borderRadius: 5,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    flex: 1,
-    marginLeft: 5,
-  },
-  bookButtonText: {
-    color: '#fff',
-    textAlign: 'center',
-    fontWeight: 'bold',
+  line: {
+    borderBottomWidth: 1, 
+    borderBottomColor: '#CED5D9', 
+    marginVertical: 10, 
   },
  
 });
-export default About;
+export default BookingData;
 

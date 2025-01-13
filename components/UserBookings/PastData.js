@@ -7,10 +7,10 @@
 
 import React,{useState} from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import AppointmentBookModal from '../components/AppointmentBookModal';
+import AppointmentBookModal from '../AppointmentBookModal';
 
-const About = ({ navigation,route }) => {
-  const [modalVisible, setModalVisible] = useState(false);
+const PastData = ({ navigation,route }) => {
+  const [appointmentModalVisible, setAppointmentModalVisible] = useState(false);
   return (
     <View style={styles.card}>
       
@@ -67,14 +67,25 @@ const About = ({ navigation,route }) => {
      
       {/* Buttons */}
       <View style={styles.buttons}>
-        <TouchableOpacity style={styles.callButton} onPress={() => setModalVisible(true)} >
+        <TouchableOpacity style={styles.callButton} onPress={() => setAppointmentModalVisible(true)} >
           <Text style={styles.callButtonText}>Call/Chat</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.bookButton}  onPress={() => navigation.navigate("BookVisitAppointment")}>
           <Text style={styles.bookButtonText}>Book Visit</Text>
         </TouchableOpacity>
       </View>
-     <AppointmentBookModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
+      <View style={styles.buttons}>
+      
+        <TouchableOpacity style={styles.bookButton}  onPress={() => navigation.navigate("CommentPage")}>
+          <Text style={styles.bookButtonText}>Write a Comment</Text>
+        </TouchableOpacity>
+      </View>
+      
+     
+      
+        
+   
+     <AppointmentBookModal modalVisible={appointmentModalVisible} setModalVisible={setAppointmentModalVisible} />
     </View>
   );
 };
@@ -195,6 +206,22 @@ const styles = StyleSheet.create({
     marginTop: 10,
     justifyContent: 'space-between',
   },
+  commentButton:{
+    backgroundColor: '#2D9CDB',
+    borderRadius: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginTop: 5,
+    display:'flex',
+
+  },
+  
+  commentLabel: {
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+
   callButton: {
     backgroundColor: '#27AE60',
     borderRadius: 5,
@@ -223,5 +250,5 @@ const styles = StyleSheet.create({
   },
  
 });
-export default About;
+export default PastData;
 

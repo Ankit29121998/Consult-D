@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text,StyleSheet } from 'react-native';
 import * as Location from 'expo-location';
-
+import LocationIcon from '../../assets/Location';
 const GetLocation = () => {
   const [address, setAddress] = useState(null);
 
@@ -33,23 +33,36 @@ const GetLocation = () => {
     fetchLocation();
   }, []);
   return (
-    <View >
-
-
-        <Text >
-          Your Current Location:
-           {address?.district},
+    <View style={styles.headerContainer} >
+        <View style={styles.locationContainer}>
+          <View> <LocationIcon  /></View>
+          <Text style={styles.location} >
+            <Text>
+            Your Current Location:
+            </Text>
+            <Text>
+            {address?.district},
           {address?.city},
-          {address?.country},
-          {address?.postalCode}
+          {address?.country}
+          {/* {address?.postalCode} */}
+            </Text>
+            
+         
    
         </Text>
-     
-     
+        </View>
     </View>
   );
 };
 
 
+const styles = StyleSheet.create({
+  
+  locationContainer:{
+    display:'flex',
+    flexDirection:'row'
+  },
+  
 
+})
 export default GetLocation;

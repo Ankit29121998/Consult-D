@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import BookingList from "./BookingList"; // Reusable component for both tabs
-
-const BookingTabs = () => {
+import PastData from "./PastData"; // Reusable component for both tabs
+import BookingData from './BookingData';
+const BookingTabs = ({navigation}) => {
   const [activeTab, setActiveTab] = useState("booked");
 
   // Sample data for each tab
@@ -122,7 +122,7 @@ const BookingTabs = () => {
       </View>
 
       {/* Reusable BookingList Component */}
-      <BookingList data={activeTab === "booked" ? bookedData : pastData} />
+      {activeTab==="booked" ? <BookingData data={bookedData} />:<PastData navigation={navigation} data={pastData}/>}
     </View>
   );
 };
