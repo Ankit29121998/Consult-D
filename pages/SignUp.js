@@ -50,8 +50,9 @@ const SignUp = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.swipeContainerOuter}>
       <Swiper
-        loop={false}
+        loop={true}
         dot={<View style={styles.dot} />}
         activeDot={<View style={styles.activeDot} />}
         style={styles.swipeContainer}
@@ -67,15 +68,16 @@ const SignUp = ({ navigation }) => {
           );
         })}
       </Swiper>
-
+      </View>
       <View style={styles.inputContainer}>
-        <Text style={styles.text}>Enter Your mobile number! </Text>
+        <Text style={styles.text}>Enter your mobile number! </Text>
+        
         <TextInput
           onFocus={() => navigation.navigate("SignUpOtpPage")}
           style={styles.input}
-          placeholder="+91   Mobile number"
+          placeholder="+91  |  Mobile number"
           keyboardType="phone-pad"
-          placeholderTextColor="#A9A9A9"
+          placeholderTextColor="#7C92A6"
         />
         <Text
           onPress={() => navigation.navigate("Home")}
@@ -90,15 +92,21 @@ const SignUp = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+   flex:1,
+    
+  },
+  swipeContainerOuter:{
+    flex:1,
+    borderWidth: 2,        // Add the border width (can adjust as needed)
+  borderColor: '#2C85C7',    // Set the border color to red
+  borderRadius: 15, 
+  backgroundColor: '#2C85C7',
   },
   swipeContainer: {
-    flex: 3, // Ensure swiper takes a larger portion of the screen
-    backgroundColor: '#2C85C7',
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
+ 
     justifyContent: 'center',
     alignItems: 'center',
+  
   },
   slide: {
     flex: 1,
@@ -137,10 +145,11 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   input: {
-    height: 50,
-    borderColor: '#BDC3C7',
+    height: 45,
+    borderColor: '#C2C8CC',
+    backgroundColor:'#EBEFF5',
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: 5,
     paddingHorizontal: 15,
     marginBottom: 10,
   },
@@ -154,8 +163,8 @@ const styles = StyleSheet.create({
   text: {
     color: '#39434C',
     fontWeight: '500',
-    fontSize: 18,
-    marginVertical: 20,
+    fontSize: 20,
+    marginVertical: 10,
   },
 });
 

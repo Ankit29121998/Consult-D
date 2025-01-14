@@ -20,6 +20,7 @@ const SignUpWithOtp = ({ navigation, route }) => {
 
     const [otp, setOtp] = useState(['', '', '', '']); // OTP state
     const [generatedOtp, setGeneratedOtp] = useState(initialOtp); // OTP from route params
+    const [isButtonEnabled, setIsButtonEnabled] = useState(false);
 
     const refs = []; // To manage input refs
 
@@ -32,6 +33,8 @@ const SignUpWithOtp = ({ navigation, route }) => {
         if (value && index < otp.length - 1) {
             refs[index + 1]?.focus();
         }
+        const allFieldsFilled = newOtp.every(val => val !== '');
+        setIsButtonEnabled(allFieldsFilled);
     };
 
     const handleKeyPress = (key, index) => {
@@ -51,9 +54,9 @@ const SignUpWithOtp = ({ navigation, route }) => {
         
         const enteredOtp = otp.join('');
         if (enteredOtp === generatedOtp) {
-            navigation.navigate('Home');
+            navigation.navigate('UserRegistration');
         } else {
-            alert('Incorrect OTP. Please try again.');
+            alert(`Incorrect OTP. Please try again.${generatedOtp}`);
         }
     };
     console.log(initialOtp,"initialOtp")
@@ -61,14 +64,12 @@ const SignUpWithOtp = ({ navigation, route }) => {
     return (
         <KeyboardAvoidingView
             style={styles.container}
-            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+
         >
             <Text style={styles.title}>Enter OTP Code</Text>
             <Text style={styles.subtitle}>
-                Code has been sent to {phoneNumber}
+                Code has been sent to  +91{phoneNumber}
             </Text>
-
-            {/* OTP Input Fields */}
             <View style={styles.otpContainer}>
                 {otp.map((_, index) => (
                     <TextInput
@@ -90,8 +91,9 @@ const SignUpWithOtp = ({ navigation, route }) => {
                 </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
-                <Text style={styles.nextButtonText}>Next</Text>
+            <TouchableOpacity style={isButtonEnabled ? styles.nextButton : styles.nextButtonDisabled}  onPress={handleNext}  disabled={!isButtonEnabled}>
+            <Text style={styles.nextButtonText}>
+               Next</Text>
             </TouchableOpacity>
         </KeyboardAvoidingView>
     );
@@ -103,10 +105,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         justifyContent:'center',
         padding: 20,
+        backgroundColor:'white'
     },
     title: {
-        fontSize: 22,
-        fontWeight: 'bold',
+        fontSize: 20,
+        fontWeight: '500',
         color: '#39434C',
         textAlign: 'center',
         marginBottom: 10,
@@ -127,20 +130,21 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         borderWidth: 1,
-        borderColor: '#BDC3C7',
+        borderColor: '#EBEFF5',
+        backgroundColor:'#EBEFF5',
         borderRadius: 8,
         textAlign: 'center',
         fontSize: 20,
-        color: '#39434C',
+        color: '#2C85C7',
     },
     resendText: {
         textAlign: 'center',
         fontSize: 14,
-        color: '#7D7D7D',
+        color: '#39434C',
         marginBottom: 40,
     },
     resendLink: {
-        color: '#3498DB',
+        color: '#2C85C7',
         textDecorationLine: 'underline',
     },
     nextButton: {
@@ -154,6 +158,13 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
     },
+    nextButtonDisabled:{
+        backgroundColor: '#8DB8D9',
+        padding: 15,
+        borderRadius: 8,
+        alignItems: 'center',
+    }
+   
 });
 
 export default SignUpWithOtp;

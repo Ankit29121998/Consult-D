@@ -23,12 +23,12 @@ const SignUpOtpPage = ({navigation}) => {
            
            <ScrollView contentContainerStyle={styles.scrollViewContent}>
                 <View style={styles.inputContainer}>
-                    <Text style={styles.text}>Enter Your mobile number!</Text>
+                    <Text style={styles.text}>Enter your mobile number!</Text>
                     <TextInput
                         style={styles.input}
-                        placeholder="+91   Mobile number"
+                        placeholder="+91  |  Mobile number"
                         keyboardType="phone-pad"
-                        placeholderTextColor="#A9A9A9"
+                        placeholderTextColor="#7C92A6"
                         autoFocus={true}  
                         value={mobileNumber} // Bind the state to the TextInput
                         onChangeText={setMobileNumber} // Update state on text change
@@ -50,15 +50,16 @@ const SignUpOtpPage = ({navigation}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor:'white',
          
     },
     scrollViewContent: {
-        flexGrow: 1,  // Ensures content takes up enough space for scrolling
-        justifyContent: 'space-between',  // Center the content when keyboard is not active
-        padding: 20,
+        flexGrow: 1,  
+        justifyContent: 'space-between',  
+        padding: 10,
     },
     inputContainer: {
-        marginBottom: 20,  // Space between input field and button
+        marginBottom: 20,  
     },
     text: {
         color:'#39434C',
@@ -67,13 +68,15 @@ const styles = StyleSheet.create({
         marginVertical:20
     },
     input: {
-        height: 50,
-        borderColor: '#BDC3C7',
+        height: 45,
+        borderColor: '#C2C8CC',
+        backgroundColor:'#EBEFF5',
         borderWidth: 1,
-        borderRadius: 10,
+        borderRadius: 5,
         paddingHorizontal: 15,
         marginBottom: 10,
     },
+    
     sendOtpButton: {
         backgroundColor: '#3498DB',
         padding: 15,

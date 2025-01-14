@@ -1,26 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import professionIcons from '../profession-mapping';
-import GetLocation from '../../Location';
-import SearchIcon from '../../../assets/SearchIcon';
-// import MicrophoneIcon from '../../../assets/Microphone';
+import ClientPage from './ClientPage';
 const Header = ({ profession = 'Doctors', setProfession = () => { }, searchQuery = '', setSearchQuery = () => { } }) => {
   const handlePress = (professionName) => {
     setProfession(professionName);
   };
   return (
     <View style={styles.screen}>
-      <GetLocation />
-      <View style={styles.searchWrapper}>
-        <SearchIcon />
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search Professions/Categories"
-          value={searchQuery}
-          onChangeText={(val) => setSearchQuery(val)}
-        />
-        {/* <MicrophoneIcon /> */}
-      </View>
+      <ClientPage searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <Text style={styles.text}>What are you looking for?</Text>
       <View style={styles.iconContainer}>
         {professionIcons.map((item, index) => {
@@ -50,6 +38,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     justifyContent: 'center',
+    width:'100%'
   },
   text: {
     fontSize: 18,

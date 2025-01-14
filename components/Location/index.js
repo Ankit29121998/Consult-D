@@ -28,6 +28,7 @@ const GetLocation = () => {
       setErrorMsg(error.message);
     }
   };
+  
 
   useEffect(() => {
     fetchLocation();
