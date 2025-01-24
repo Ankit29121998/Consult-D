@@ -5,12 +5,11 @@ import UserBookingIcon from '../assets/HomePageIcon/user-booking';
 import UserServicesIcon from '../assets/HomePageIcon/user-services';
 import UserProfileIcon from '../assets/HomePageIcon/user-profile';
 import UserHistoryIcon from '../assets/HomePageIcon/user-history';
-import AdviloIcon from '../assets/Advilo';
 import UserServices from '../components/UserServices';
 import UserBookings from '../components/UserBookings';
 import UserHistory from '../components/UserHistory';
 import UserProfile from '../components/UserProfile';
-import UserHomePage from '../components/HomePage';
+
 
 // Tab Navigator
 const Tab = createBottomTabNavigator();
@@ -21,8 +20,8 @@ const HomePage = () => {
       <Tab.Navigator
          screenOptions={({ route }) => ({
             tabBarIcon: ({focused}) => {
-              if (route.name === 'Advilo') {
-                return <AdviloIcon  fill={focused ? '#2C85C7' : '#6E8294'} />;
+              if (route.name === 'Services') {
+                return <UserServicesIcon  fill={focused ? '#2C85C7' : '#6E8294'} />;
               } else if (route.name === 'Booking') {
                 return <UserBookingIcon fill={focused ? '#2C85C7' : '#6E8294'}  />;
               }else if (route.name === 'History') {
@@ -44,7 +43,7 @@ const HomePage = () => {
           
           })}
       >
-        <Tab.Screen name="Advilo" component={UserHomePage}   options={{ headerShown: false }} />
+        <Tab.Screen name="Services" component={UserServices}   options={{ headerShown: false }} />
         <Tab.Screen name="Booking" component={UserBookings}   options={{ headerShown: false }} />
         <Tab.Screen name="History" component={UserHistory}   options={{ headerShown: false }} />
         <Tab.Screen name="Profile" component={UserProfile}   options={{ headerShown: false }} />

@@ -15,6 +15,8 @@ import SignUpWithOtp from "./pages/SignUpWithOtp";
 import BookVisitAppointment from './pages/BookVisitAppointment';
 import CommentPage from './pages/CommentPage';
 import LocationSelection from './pages/LocationSelection';
+import Categories from './pages/Categories';
+import SubCategories from './pages/SubCategories';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -39,7 +41,8 @@ const App = () => {
         <Stack.Screen name="BookVisitAppointment" component={BookVisitAppointment} options={{ title: 'Book Visit Appointment' }} />
         <Stack.Screen name="LocationSelection" component={LocationSelection} options={{  headerShown: false }} />
 
-        
+        <Stack.Screen name="Categories" component={Categories}  options= {{ title: 'Choose Categories' }}/>
+        <Stack.Screen name="SubCategories" component={SubCategories}  options= {{  headerShown: false}}/>
         <Stack.Screen name="UserServicesPage" component={UserServicesPage} options={{ headerShown: false }} />
         <Stack.Screen name="Detail" component={About} options={({ route }) => ({ title: route.params?.category })} />
         <Stack.Screen name="CommentPage" component={CommentPage}  options= {{ title: 'Write a Comment' }}/>

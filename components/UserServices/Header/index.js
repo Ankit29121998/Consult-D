@@ -2,19 +2,26 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import professionIcons from '../profession-mapping';
 import ClientPage from './ClientPage';
-const Header = ({ profession = 'Doctors', setProfession = () => { }, searchQuery = '', setSearchQuery = () => { } }) => {
-  const handlePress = (professionName) => {
-    setProfession(professionName);
-  };
+import RechargeSection from './RechargeSection';
+const Header = ({ profession = 'Doctors',  searchQuery = '', setSearchQuery = () => { } }) => {
+  
   return (
     <View style={styles.screen}>
       <ClientPage searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <Text style={styles.text}>What are you looking for?</Text>
+      <RechargeSection/>
+      <View style={styles.container}>
+              <View style={styles.line} />
+              <Text style={styles.text}>Categories</Text>
+              <View style={styles.line} />
+      </View>
+    
       <View style={styles.iconContainer}>
         {professionIcons.map((item, index) => {
           const { Component, name } = item || {};
           return (
-            <TouchableOpacity key={index} onPress={() => handlePress(name)} style={styles.icon}>
+            <TouchableOpacity key={index} 
+            // onPress={() => handlePress(name)}
+             style={styles.icon}>
               <View style={[
                 styles.iconBox,
               ]} >
@@ -40,20 +47,29 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width:'100%'
   },
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 15,
+  },
+  line: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#C2C8CC',
+  },
   text: {
+    marginHorizontal: 8,
     fontSize: 18,
-    fontWeight: 600,
-    color: '#39434C',
+    fontWeight: '700',
+    color: '#555B61',
   },
   iconContainer: {
     flexDirection: 'row',
-    // flexWrap: 'wrap',  
-    // justifyContent: 'flex-start',
     alignItems: 'flex-start',
     width: '100%',
   },
   icon: {
-    minWidth: '33%',
+    width: '33%',
     alignItems: 'center',
   },
   iconBox: {

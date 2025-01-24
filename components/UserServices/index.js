@@ -1,15 +1,20 @@
 import React ,{useState}from 'react';
-import { View,  StyleSheet } from 'react-native';
+import { View,  StyleSheet,ScrollView } from 'react-native';
 import Header from './Header';
 import Body from './Body';
 
-const UserServices = () => {
-    const [profession,setProfession]=useState('Doctors');
+
+const UserServices = ({profession,category}) => {
+
     const [searchQuery,setSearchQuery]=useState('');
     return(
         <View style={styles.screen}>
-            <Header profession={profession}  setProfession={setProfession} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
-            <Body profession={profession}  searchQuery={searchQuery} />
+          <ScrollView>
+          <Header profession={profession} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+
+<Body profession={profession}  searchQuery={searchQuery} />
+          </ScrollView>
+           
       </View>
     )
 }
@@ -20,6 +25,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
+      backgroundColor:'white',
     },
     text: {
       fontSize: 18,
