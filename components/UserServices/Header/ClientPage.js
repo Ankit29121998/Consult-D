@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, Image,TouchableOpacity } from "react-native";
-import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import SearchIcon from "../../../assets/SearchIcon";
 import * as Location from 'expo-location';
 import LocationIcon from '../../../assets/Location';
 import { useNavigation } from '@react-navigation/native';
-const ClientServicesPage = ({ searchQuery = '', setSearchQuery = () => { } }) => {
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+const ClientServicesPage = ( ) => {
      const navigation = useNavigation();
     const [address, setAddress] = useState(null);
 
@@ -52,7 +53,9 @@ const ClientServicesPage = ({ searchQuery = '', setSearchQuery = () => { } }) =>
                                     ? `${address.city.substring(0, 3)}...`
                                     : address?.city}
                             </Text>
-                             <TouchableOpacity onPress={() =>navigation.navigate("LocationSelection")} style={styles.submitButton} > <MaterialIcons name="keyboard-arrow-down" size={20} color="#fff" /></TouchableOpacity>
+                             <TouchableOpacity onPress={() =>navigation.navigate("LocationSelection")} style={styles.submitButton} >
+                             <MaterialIcons name="keyboard-arrow-down" size={20} color="#fff" />
+                             </TouchableOpacity>
                             
                         </View>
                     </View>
@@ -67,8 +70,8 @@ const ClientServicesPage = ({ searchQuery = '', setSearchQuery = () => { } }) =>
                     <TextInput
                         style={styles.searchInput}
                         placeholder="Search Professions/Categories"
-                        value={searchQuery}
-                        onChangeText={(val) => setSearchQuery(val)}
+                        // value={searchQuery}
+                        // onChangeText={(val) => setSearchQuery(val)}
                     />
                 </View>
             </View>

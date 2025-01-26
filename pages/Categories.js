@@ -18,11 +18,11 @@ const Categories = ({ navigation, route }) => {
         {(categories || []).map((item, index) => {
           const key = Object.keys(item)[0];
           const value = item[key];
-          const { Sub_Catgories=[] ,IconComponent=null} = value || {};
+          const { Sub_Categories=[] ,IconComponent=null,route_category} = value || {};
          
           return (
             <View key={index}>
-              <TouchableOpacity onPress={() => handleClick(key, Sub_Catgories)}>
+              <TouchableOpacity onPress={() => handleClick(route_category, Sub_Categories)}>
                 <View>
                   <IconComponent/>
                 </View>

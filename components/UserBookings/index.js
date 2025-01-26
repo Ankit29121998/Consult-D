@@ -167,7 +167,7 @@ const BookingTabs = ({navigation}) => {
           </TouchableOpacity>
         ))}
       </View>
-      <View style={styles.filterRow}>
+      {activeTab==="Booked" ?  <View style={styles.filterRow}>
         {statuses.map((status) => (
           <TouchableOpacity
             key={status}
@@ -187,7 +187,8 @@ const BookingTabs = ({navigation}) => {
             </Text>
           </TouchableOpacity>
         ))}
-      </View>
+      </View>:null}
+     
       <View>
       {activeTab==="Booked" ? <BookingData data={bookedData} />:<PastData navigation={navigation} data={pastData}/>}
       </View>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import {
     View,
     Text,
@@ -18,9 +18,12 @@ const generateOTPRandom = () => {
 const SignUpWithOtp = ({ navigation, route }) => {
     const { phoneNumber, otp: initialOtp } = route.params;
 
+
     const [otp, setOtp] = useState(['', '', '', '']); // OTP state
     const [generatedOtp, setGeneratedOtp] = useState(initialOtp); // OTP from route params
     const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+    const [countdown, setCountdown] = useState(35);
+    const [isResendEnabled, setIsResendEnabled] = useState(false);
 
     const refs = []; // To manage input refs
 
@@ -59,7 +62,25 @@ const SignUpWithOtp = ({ navigation, route }) => {
             alert(`Incorrect OTP. Please try again.${generatedOtp}`);
         }
     };
+    const handleResendCode = () => {
+        setCountdown(35);
+        setIsResendEnabled(true);  
+      };
+      const handleAnotherMobile=()=>{
+        navigation.navigate("SignUpOtpPage")
+      }
     console.log(initialOtp,"initialOtp")
+    useEffect(() => {
+        // Set up the countdown effect
+        if (countdown > 0) {
+          const intervalId = setInterval(() => {
+            setCountdown(prev => prev - 1);
+          }, 1000);
+    
+          // Clear the interval when the countdown reaches 0
+          return () => clearInterval(intervalId);
+        } 
+      }, [countdown]);
 
     return (
         <KeyboardAvoidingView
@@ -84,12 +105,34 @@ const SignUpWithOtp = ({ navigation, route }) => {
                     />
                 ))}
             </View>
+                <Text  style={styles.countdownText} >0:{countdown}s {(countdown!==0 &&isResendEnabled)?'Code Resended':null}</Text>
+                
+                {isResendEnabled?
+                 <Text style={styles.resendText}>
+                    
+                 {countdown!==0?
+                 <Text style={[styles.resendLink,{ color:'#B0B0B0' }]} >
+                 Try putting another mobile number
+                 </Text>:
+                 <TouchableOpacity   onPress={ ()=>handleAnotherMobile ()}  >
+                 <Text style={[styles.resendLink, { color:'#2879B5' }]} >Try putting another mobile number</Text>
+                 </TouchableOpacity>
 
-            <TouchableOpacity onPress={handleResend}>
-                <Text style={styles.resendText}>
-                    Didn’t receive the OTP? <Text style={styles.resendLink}>Resend Code</Text>
-                </Text>
-            </TouchableOpacity>
+                 }
+             </Text>:<Text style={styles.resendText}>
+                    Didn't receive the OTP? 
+                    {countdown!==0?
+                     <Text style={[styles.resendLink,{ color:'#B0B0B0' }]} >
+                     Resend Code
+                     </Text>
+                     :
+                     <TouchableOpacity   onPress={ ()=>handleResendCode ()}  >
+                     <Text style={[styles.resendLink, { color:'#2879B5' }]} >Resend Code</Text>
+                     </TouchableOpacity>
+                     }
+                </Text>}
+               
+         
 
             <TouchableOpacity style={isButtonEnabled ? styles.nextButton : styles.nextButtonDisabled}  onPress={handleNext}  disabled={!isButtonEnabled}>
             <Text style={styles.nextButtonText}>
@@ -137,15 +180,21 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#2C85C7',
     },
+    countdownText:{
+        textAlign: 'center',
+        fontSize: 14,
+        color: '#39434C',
+    },
     resendText: {
         textAlign: 'center',
         fontSize: 14,
         color: '#39434C',
-        marginBottom: 40,
+        marginBottom: 20,
     },
     resendLink: {
+        marginLeft:8,
         color: '#2C85C7',
-        textDecorationLine: 'underline',
+        fontWeight:'700'
     },
     nextButton: {
         backgroundColor: '#3498DB',

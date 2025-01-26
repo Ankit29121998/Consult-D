@@ -29,7 +29,8 @@ import HomePageIcon from '../assets/HomePage';
 // Tab Navigator
 const Tab = createBottomTabNavigator();
 const AdviloPlaceholder = () => <></>;
-const SubCategories = ({navigation}) => {
+const SubCategories = ({navigation,route}) => {
+  const { profession ,category} = route.params;
 
   return (
     <View style={styles.container}>
@@ -81,7 +82,9 @@ const SubCategories = ({navigation}) => {
           ),
         }}
       />
-        <Tab.Screen name="Services" component={UserServices}   options={{ headerShown: false }} />
+        <Tab.Screen name="Services" component={UserServices}  
+         initialParams={{ profession: profession, category: category }}
+          options={{ headerShown: false }} />
         <Tab.Screen name="Booking" component={UserBookings}   options={{ headerShown: false }} />
         <Tab.Screen name="History" component={UserHistory}   options={{ headerShown: false }} />
         <Tab.Screen name="Profile" component={UserProfile}   options={{ headerShown: false }} />

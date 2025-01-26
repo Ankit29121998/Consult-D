@@ -6,7 +6,10 @@ const RechargeSection = () => {
   return (
     <View style={styles.container}>
       <View style={styles.walletContainer}>
+        <View style={styles.wallet}>
         <WalletIcon/>
+        </View>
+        
         <Text style={styles.amountText}>₹ 10,000</Text>
       </View>
       
@@ -24,16 +27,21 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderWidth: 1,
     borderColor: '#2879B5',
-    borderRadius: 20,
+    borderRadius: 25,
     margin: 20,
   },
   walletContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  walletIcon: {
-    backgroundColor: '#2A76E3',
-
+  
+  wallet:{
+    backgroundColor:'#2879B5',
+    borderRadius:25,
+    width:50,
+    height:50,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   amountText: {
     marginLeft:10,
@@ -44,7 +52,7 @@ const styles = StyleSheet.create({
   rechargeButton: {
     backgroundColor: '#2879B5',
     paddingHorizontal: 20,
-    paddingVertical: 12,
+    paddingVertical: 14,
 
     borderRadius: 20,
   },

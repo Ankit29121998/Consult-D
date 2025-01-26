@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, Image,TouchableOpacity } from "react-native";
-import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
+import {FontAwesome } from "@expo/vector-icons";
 import SearchIcon from "../../../assets/SearchIcon";
 import * as Location from 'expo-location';
 import LocationIcon from '../../../assets/Location';
 import { useNavigation } from '@react-navigation/native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 const ClientServicesPage = ({ searchQuery = '', setSearchQuery = () => { } }) => {
      const navigation = useNavigation();
     const [address, setAddress] = useState(null);
@@ -52,11 +53,12 @@ const ClientServicesPage = ({ searchQuery = '', setSearchQuery = () => { } }) =>
                                     ? `${address.city.substring(0, 3)}...`
                                     : address?.city}
                             </Text>
-                             <TouchableOpacity onPress={() =>navigation.navigate("LocationSelection")} style={styles.submitButton} > <MaterialIcons name="keyboard-arrow-down" size={20} color="#fff" /></TouchableOpacity>
-                            
+ <TouchableOpacity onPress={() =>navigation.navigate("LocationSelection")} style={styles.submitButton} >
+                             <MaterialIcons name="keyboard-arrow-down" size={20} color="#fff" />
+                             </TouchableOpacity>                            
                         </View>
                     </View>
-                    <FontAwesome name="heart-o" size={24} color="#fff" style={styles.heartIcon} />
+                    {/* <FontAwesome name="heart-o" size={24} color="#fff" style={styles.heartIcon} /> */}
                     <TouchableOpacity onPress={() =>navigation.navigate("Profile")} >
                     <Image
                         source={{ uri: "https://via.placeholder.com/50" }} // Replace with actual profile image URL

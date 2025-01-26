@@ -1,14 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
-import professionIcons from '../profession-mapping';
+import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import ClientPage from './ClientPage';
 import RechargeSection from './RechargeSection';
-const Header = ({ profession = 'Doctors',  searchQuery = '', setSearchQuery = () => { } }) => {
-  
+const Header = ({ subCategories,subCategoriesSelected,setSubCategoriesSelected=()=>{} }) => {
+
+  const handlePress=(val)=>{
+    setSubCategoriesSelected(val)
+  }
   return (
     <View style={styles.screen}>
-      <ClientPage searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <RechargeSection/>
+      <ClientPage />
+       <RechargeSection/>
       <View style={styles.container}>
               <View style={styles.line} />
               <Text style={styles.text}>Categories</Text>
@@ -16,22 +18,38 @@ const Header = ({ profession = 'Doctors',  searchQuery = '', setSearchQuery = ()
       </View>
     
       <View style={styles.iconContainer}>
-        {professionIcons.map((item, index) => {
-          const { Component, name } = item || {};
+        {(subCategories || []).map((item, index) => {
+         
+         let key, value;
+
+      
+         for (let k in item) {
+           if (item.hasOwnProperty(k)) { 
+             key = k; 
+             value = item[k]; 
+             break; 
+           }
+         }
+
+         const{IconComponent}=value || {}
           return (
+            
             <TouchableOpacity key={index} 
-            // onPress={() => handlePress(name)}
+            onPress={() => handlePress(key)}
              style={styles.icon}>
               <View style={[
                 styles.iconBox,
               ]} >
                 <View style={styles.iconSize}>
-                  <Component fill={profession === name ? '#2C85C7' : '#6E8294'} />
+                  <IconComponent 
+                  fill={subCategoriesSelected === key ? '#2C85C7' : '#F1F6FE'} 
+                  insidefill={subCategoriesSelected === key ? '#fff' : '#2C85C7'} 
+                  />
                 </View>
               </View>
               <Text style={
-                { color: profession === name ? '#2C85C7' : '#6E8294' }
-              }> {name}</Text>
+                { color: subCategoriesSelected === key ? '#2C85C7' : '#6E8294' }
+              }> {key}</Text>
             </TouchableOpacity>
           );
         })}
@@ -59,8 +77,8 @@ const styles = StyleSheet.create({
   },
   text: {
     marginHorizontal: 8,
-    fontSize: 18,
-    fontWeight: '700',
+    fontSize: 16,
+    fontWeight: '500',
     color: '#555B61',
   },
   iconContainer: {

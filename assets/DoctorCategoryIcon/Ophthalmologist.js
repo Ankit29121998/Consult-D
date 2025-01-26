@@ -2,7 +2,7 @@ import React from 'react';
 
 import Svg, { Path } from 'react-native-svg';
 
-const EyeSpecialist = () => {
+const Ophthalmologist = () => {
     return (
 <Svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
 <Path d="M35.7723 19.1253C35.7723 22.4706 28.0348 30.2628 18.492 30.2628C8.9492 30.2628 1.21167 23.4274 1.21167 19.1253C1.21167 15.7699 35.7723 15.7699 35.7723 19.1253Z" fill="#E1E8ED"/>
@@ -18,4 +18,4 @@ const EyeSpecialist = () => {
     );
 };
 
-export default EyeSpecialist;
+export default Ophthalmologist;

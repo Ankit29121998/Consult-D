@@ -2,7 +2,7 @@ import React from 'react';
 
 import Svg, { Path } from 'react-native-svg';
 
-const DietNutrition = () => {
+const Dietitian = () => {
     return (
         <Svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
             <Path d="M16.5681 21.0247L1.91692 32.4268C1.91692 32.4268 1.42997 33.113 1.84003 33.7082C2.25294 34.3034 3.6426 34.1496 5.88655 33.1415C7.91978 32.2274 13.1595 29.5136 15.7081 27.8164C17.579 26.5691 20.4324 24.9317 22.1922 23.2829C23.0067 22.5226 23.4651 21.9388 23.7271 21.0304C24.5302 18.2426 23.0237 17.0864 23.0237 17.0864L16.5681 21.0247Z" fill="#ED6C31" />
@@ -18,4 +18,4 @@ const DietNutrition = () => {
     );
 };
 
-export default DietNutrition;
+export default Dietitian;
