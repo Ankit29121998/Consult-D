@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
+import SearchIcon from "../assets/SearchIcon";
 
 
 const ListSpecialities = ({route,navigation}) => {
@@ -47,12 +48,21 @@ const ListSpecialities = ({route,navigation}) => {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.searchBar}
-        placeholder={`Search ${category || 'Specialties'}`}
-        value={searchQuery}
-        onChangeText={setSearchQuery}
-      />
+      <View style={styles.searchContainer}>
+
+   
+      <View style={styles.searchBar}>
+                    <SearchIcon />
+                    <TextInput
+                        style={styles.searchInput}
+                        placeholder={`Search ${category || 'Specialties'}`}
+                        value={searchQuery}
+                        onChangeText={setSearchQuery}
+                     
+                    />
+                </View>
+                </View>
+
       <FlatList
         data={filteredSpecialties}
         keyExtractor={(item) => item.id}
@@ -66,40 +76,50 @@ const ListSpecialities = ({route,navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F9F9F9",
-    padding: 20,
+    backgroundColor: "white",
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 20,
   },
-  searchBar: {
-    height: 45,
-    borderWidth: 1,
-    borderColor: "#EBEFF5",
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    marginBottom: 10,
-    backgroundColor: "#EBEFF5",
+  header:{
+    padding:16,
   },
+  searchContainer:{
+    padding:16
+  },
+  searchBar: {
+    flexDirection: "row",
+    backgroundColor: "#EBEFF5",
+    alignItems: "center",
+    paddingHorizontal: 10,
+    borderRadius: 10,
+    elevation: 3,
+    height:45,
+},
+searchInput: {
+    flex: 1,
+    fontSize: 16,
+    color: "#6E8294",
+},
   itemContainer: {
     flexDirection: "row",
     alignItems: "center",
     padding: 15,
     backgroundColor: "#FFFFFF",
-    borderRadius: 10,
-    marginBottom: 10,
+   borderBottomWidth:2,
+   borderColor:'#EBEFF5',
     elevation: 2,
   },
-  icon: {
-    width: 30,
-    height: 30,
-    marginRight: 10,
+  iconBox:{
+    marginRight:20
   },
+  
   itemText: {
     fontSize: 16,
-    color: "#333",
+    color: "#555B61",
+    fontWeight:700,
   },
 });
 

@@ -10,7 +10,8 @@ const Header = ({ subCategories,subCategoriesSelected,setSubCategoriesSelected=(
   return (
     <View style={styles.screen}>
       <ClientPage />
-       <RechargeSection/>
+            <View style={styles.rechargeContainer}><RechargeSection/></View>
+  
       <View style={styles.container}>
               <View style={styles.line} />
               <Text style={styles.text}>Categories</Text>
@@ -63,12 +64,17 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     justifyContent: 'center',
-    width:'100%'
+    width:'100%',
+    backgroundColor:"white",
+
   },
   container: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 15,
+  },
+  rechargeContainer:{
+    padding:16,
   },
   line: {
     flex: 1,

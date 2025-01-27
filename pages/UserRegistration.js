@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     borderBottomWidth:1,
   },
   doneButton: {
-    backgroundColor: '#007BFF',
+    backgroundColor: '#2C85C7',
     borderRadius: 5,
     paddingVertical: 12,
     alignItems: 'center',

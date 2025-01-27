@@ -33,17 +33,37 @@ const HomePage = () => {
             },
           tabBarShowLabel: false, // Hide tab labels
           tabBarStyle: {
-            backgroundColor: '#f8f8f8',
+            backgroundColor: 'white',
             height: 60,
             borderTopLeftRadius: 15,
             borderTopRightRadius: 15,
             borderWidth: 0.5,
             paddingTop:10,
-            borderColor: '#dcdcdc',
+            borderColor: '#FFFFFF',
           },
           
           })}
       >
+
+{/* <Tab.Screen
+        name="Advilo"
+        component={UserHomePage}  // Placeholder component for rendering
+        options={{
+          headerShown: false,
+          
+          tabBarButton: (props) => (
+            <TouchableOpacity
+            style={styles.iconContainer} 
+              onPress={() => {
+                navigation.navigate('UserServicesPage');  
+              }}
+            >
+               <HomePageIcon fill="#2C85C7" />
+
+            </TouchableOpacity>
+          ),
+        }}
+      /> */}
         <Tab.Screen name="Advilo" component={UserHomePage}   options={{ headerShown: false }} />
         <Tab.Screen name="Booking" component={UserBookings}   options={{ headerShown: false }} />
         <Tab.Screen name="History" component={UserHistory}   options={{ headerShown: false }} />

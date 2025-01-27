@@ -14,14 +14,14 @@ const Categories = ({ navigation, route }) => {
   }
   return (
     <View style={styles.screen}>
-      <Text>
+      <Text style={styles.container}>
         {(categories || []).map((item, index) => {
           const key = Object.keys(item)[0];
           const value = item[key];
           const { Sub_Categories=[] ,IconComponent=null,route_category} = value || {};
          
           return (
-            <View key={index}>
+            <View key={index} style={styles.itemContainer}>
               <TouchableOpacity onPress={() => handleClick(route_category, Sub_Categories)}>
                 <View>
                   <IconComponent/>
@@ -40,9 +40,23 @@ const styles = StyleSheet.create({
   screen: {
     backgroundColor: 'white',
     height: '100%',
+  },
+  container:{
+    paddingHorizontal:8,
+    flexDirection:'row',
+    justifyContent: 'flex-end',
+    flexWrap:'wrap'
 
-
-  }
+  },
+  itemContainer: {
+    width:'49%',
+    padding:8,
+    backgroundColor: "#FFF", 
+    borderRadius: 10, 
+    marginBottom: 10,
+    elevation: 3, // Shadow for Android
+  
+  },
 })
 
 export default Categories;

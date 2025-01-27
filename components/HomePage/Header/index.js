@@ -1,67 +1,131 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
-import professionIcons from '../profession-mapping';
-import ClientPage from './ClientPage';
-const Header = ({ profession = 'Doctors', setProfession = () => { }, searchQuery = '', setSearchQuery = () => { } }) => {
-  const handlePress = (professionName) => {
-    setProfession(professionName);
-  };
-  return (
-    <View style={styles.screen}>
-      <ClientPage searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TextInput, Image,TouchableOpacity } from "react-native";
 
-      
-    </View>
-  )
-}
+import * as Location from 'expo-location';
+import LocationIcon from '../../../assets/Location';
+import { useNavigation } from '@react-navigation/native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+const Header = ({ searchQuery = '', setSearchQuery = () => { } }) => {
+     const navigation = useNavigation();
+    const [address, setAddress] = useState(null);
 
+    const fetchLocation = async () => {
+        try {
+
+            // Request permission to access location
+            const { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                setErrorMsg('Permission to access location was denied');
+                return;
+            }
+
+            // Fetch current location
+            const loc = await Location.getCurrentPositionAsync({
+                accuracy: Location.Accuracy.High,
+            });
+            const addressData = await Location.reverseGeocodeAsync({
+                latitude: loc.coords.latitude,
+                longitude: loc.coords.longitude,
+            });
+            setAddress(addressData[0]);
+        } catch (error) {
+            setErrorMsg(error.message);
+        }
+    };
+
+    useEffect(() => {
+        fetchLocation();
+    }, []);
+    return (
+        <View style={styles.container}>
+            {/* Header Section */}
+            <View style={styles.header}>
+                <View style={styles.headerContent}>
+                    <LocationIcon />
+                    <View style={styles.locationText}>
+                        <Text style={styles.currentLocationText}>Your current location</Text>
+                        <View style={styles.locationRow}>
+                            <Text style={styles.location}>
+
+                                {address?.district}-
+                                {(address?.district?.length + address?.city?.length) > 12
+                                    ? `${address.city.substring(0, 3)}...`
+                                    : address?.city}
+                            </Text>
+ <TouchableOpacity onPress={() =>navigation.navigate("LocationSelection")} style={styles.submitButton} >
+                             <MaterialIcons name="keyboard-arrow-down" size={20} color="#fff" />
+                             </TouchableOpacity>                            
+                        </View>
+                    </View>
+                    {/* <FontAwesome name="heart-o" size={24} color="#fff" style={styles.heartIcon} /> */}
+                    <TouchableOpacity onPress={() =>navigation.navigate("Profile")} >
+                    <Image
+                        source={{ uri: "https://via.placeholder.com/50" }} // Replace with actual profile image URL
+                        style={styles.profileImage}
+                    />
+                    </TouchableOpacity>
+                    
+                </View>
+               
+            </View>
+
+            {/* Search Bar */}
+
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: 'center',
-    width:'100%'
-  },
-  text: {
-    fontSize: 18,
-    fontWeight: 600,
-    color: '#39434C',
-  },
-  iconContainer: {
-    flexDirection: 'row',
-    // flexWrap: 'wrap',  
-    // justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-    width: '100%',
-  },
-  icon: {
-    minWidth: '33%',
-    alignItems: 'center',
-  },
-  iconBox: {
-    padding: 5,
-    borderRadius: 10, // Optional: rounded corners for the background box
-    alignItems: 'center',  // Center the content inside the box
-    justifyContent: 'center',  // Center vertically inside the box
-  },
-  iconSize: {
-    width: 50,
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  searchWrapper: {
-    backgroundColor: '#fff',
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 8,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
+    container: {
+        flex: 1,
+        backgroundColor: "white",
+        width:'100%',
+        paddingTop:20,
+        paddingBottom:10,
+        height:80,
 
-  },
-})
+    },
+    header: {
+        backgroundColor: "#2C85C7",
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+        padding: 10,
+        height:100
+    },
+    headerContent: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginTop: 20,
+    },
+    locationText: {
+        flex: 1,
+        marginLeft: 10,
+    },
+    currentLocationText: {
+        color: "#fff",
+        fontSize: 14,
+    },
+    locationRow: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginTop: 2,
+    },
+    location: {
+        color: "#fff",
+        fontWeight: "bold",
+        fontSize: 16,
+        marginRight: 5,
+    },
+    heartIcon: {
+        marginHorizontal: 10,
+    },
+    profileImage: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+    },
+    
+});
+
 export default Header;

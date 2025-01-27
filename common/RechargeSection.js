@@ -14,8 +14,8 @@ const RechargeSection = () => {
         <Text style={styles.amountText}>₹ 10,000</Text>
       </View>
       
-      <TouchableOpacity style={styles.rechargeButton}>
-        <Text style={styles.rechargeText} onPress={() =>navigation.navigate("Wallet")}> Recharge</Text>
+      <TouchableOpacity style={styles.rechargeButton} onPress={() =>navigation.navigate("Wallet")}>
+        <Text style={styles.rechargeText} > Recharge</Text>
       </TouchableOpacity>
     </View>
   );
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#2879B5',
     borderRadius: 25,
-    margin: 20,
+    width:'100%'
   },
   walletContainer: {
     flexDirection: 'row',
