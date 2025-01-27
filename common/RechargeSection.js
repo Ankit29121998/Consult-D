@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons'; // Import wallet icon or use any other icon library
-import WalletIcon from '../../../assets/Wallet';
+import WalletIcon from '../assets/Wallet';
+import { useNavigation } from '@react-navigation/native';
 const RechargeSection = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.walletContainer}>
@@ -14,7 +15,7 @@ const RechargeSection = () => {
       </View>
       
       <TouchableOpacity style={styles.rechargeButton}>
-        <Text style={styles.rechargeText}>Recharge</Text>
+        <Text style={styles.rechargeText} onPress={() =>navigation.navigate("Wallet")}> Recharge</Text>
       </TouchableOpacity>
     </View>
   );

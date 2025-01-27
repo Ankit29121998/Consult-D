@@ -2,9 +2,11 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import NotificationIcon from '../../assets/Notification';
 import EditProfileIcon from '../../assets/EditProfile';
+import { useNavigation } from '@react-navigation/native';
 
 
 const ProfilePage = () => {
+   const navigation = useNavigation();
   return (
     <View style={styles.container}>
       {/* Header */}
@@ -34,8 +36,8 @@ const ProfilePage = () => {
       {/* Wallet Section */}
       <View style={styles.walletContainer}>
         <Text style={styles.walletAmount}>₹ 500.81</Text>
-        <TouchableOpacity style={styles.addMoneyButton}>
-          <Text style={styles.addMoneyText}>Add Money</Text>
+        <TouchableOpacity style={styles.addMoneyButton} onPress={() =>navigation.navigate("Wallet")}  >
+          <Text style={styles.addMoneyText} >Add Money</Text>
         </TouchableOpacity>
       
       </View>

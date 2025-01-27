@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import ClientPage from './ClientPage';
-import RechargeSection from './RechargeSection';
+import RechargeSection from '../../../common/RechargeSection';
 const Header = ({ subCategories,subCategoriesSelected,setSubCategoriesSelected=()=>{} }) => {
 
   const handlePress=(val)=>{

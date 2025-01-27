@@ -21,4 +21,4 @@ const RegistrationSuccessful = () => {
   )
 }
 
-export default RegistrationSuccessful
+export default RegistrationSuccessful;

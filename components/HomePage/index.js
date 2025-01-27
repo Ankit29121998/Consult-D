@@ -4,6 +4,7 @@ import Header from './Header';
 import Body from './Body';
 import DoctorIcon from './Doctor'
 import { useNavigation } from '@react-navigation/native';
+import RechargeSection from '../../common/RechargeSection';
 const UserServices = () => {
   const navigation = useNavigation();
   const [profession, setProfession] = useState('Doctors');
@@ -11,6 +12,7 @@ const UserServices = () => {
   return (
     <View style={styles.screen}>
       <Header profession={profession} setProfession={setProfession} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <RechargeSection/>
       <View style={styles.container}>
         <View style={styles.line} />
         <Text style={styles.text}>What are you looking for?</Text>
