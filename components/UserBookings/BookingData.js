@@ -9,9 +9,12 @@ import React,{useState} from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import CancelModal from '../CancelModal';
 
-const BookingData = ({ navigation,route }) => {
+const BookingData = ({ navigation }) => {
     const[modal,setModal]=useState(false);
   return (
+     <TouchableOpacity onPress={() =>navigation.navigate("ProfileDetail")}>
+
+   
     <View style={styles.card}>
       
       <View style={styles.upperPart}>
@@ -81,6 +84,7 @@ const BookingData = ({ navigation,route }) => {
     <CancelModal modalVisible={modal} setModalVisible={setModal}/>
      
     </View>
+      </TouchableOpacity>
   );
 };
 

@@ -9,9 +9,10 @@ import React,{useState} from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import AppointmentBookModal from '../AppointmentBookModal';
 
-const PastData = ({ navigation,route }) => {
+const PastData = ({ navigation }) => {
   const [appointmentModalVisible, setAppointmentModalVisible] = useState(false);
   return (
+     <TouchableOpacity onPress={() =>navigation.navigate("ProfileDetail")}>
     <View style={styles.card}>
       
       {/* Profile and Name */}
@@ -87,6 +88,7 @@ const PastData = ({ navigation,route }) => {
    
      <AppointmentBookModal modalVisible={appointmentModalVisible} setModalVisible={setAppointmentModalVisible} />
     </View>
+    </TouchableOpacity>
   );
 };
 

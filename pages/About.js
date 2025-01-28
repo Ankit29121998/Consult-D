@@ -12,6 +12,8 @@ import AppointmentBookModal from '../components/AppointmentBookModal';
 const About = ({ navigation,route }) => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
+  <TouchableOpacity onPress={() =>navigation.navigate("ProfileDetail")}>
+    
     <View style={styles.card}>
       
       {/* Profile and Name */}
@@ -76,6 +78,7 @@ const About = ({ navigation,route }) => {
       </View>
      <AppointmentBookModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
     </View>
+    </TouchableOpacity>
   );
 };
 

@@ -103,7 +103,7 @@ const BookingTabs = ({navigation}) => {
   const [selectedCategory, setSelectedCategory] = useState("Doctors");
   const [selectedStatus, setSelectedStatus] = useState("All");
 
-  const categories = ["Doctors", "Lawyers"];
+  const categories = ["Doctors"];
   const statuses = ["All", "Pending", "Confirmed", "Paid"];
  
 
@@ -190,7 +190,7 @@ const BookingTabs = ({navigation}) => {
       </View>:null}
      
       <View>
-      {activeTab==="Booked" ? <BookingData data={bookedData} />:<PastData navigation={navigation} data={pastData}/>}
+      {activeTab==="Booked" ? <BookingData data={bookedData}  navigation={navigation}/>:<PastData navigation={navigation} data={pastData}/>}
       </View>
       </View>
     </View>

@@ -19,6 +19,7 @@ import Categories from './pages/Categories';
 import SubCategories from './pages/SubCategories';
 import ListSpecialities from "./pages/ListSpecialities";
 import Wallet from "./pages/Wallet";
+import ProfileDetail from "./pages/ProfileDetail";
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -47,8 +48,9 @@ const App = () => {
         <Stack.Screen name="SubCategories" component={SubCategories} options={{ headerShown: false }} />
         <Stack.Screen name="UserServicesPage" component={UserServicesPage} options={{ headerShown: false }} />
         <Stack.Screen name="Detail" component={About} options={({ route }) => ({ title: route.params?.category })} />
-        <Stack.Screen name="CommentPage" component={CommentPage} options={{ title: 'Write a Comment' }} />
+        <Stack.Screen name="CommentPage" component={CommentPage} options={{ title: 'Write a comment' }} />
         <Stack.Screen name="ListSpecialities" component={ListSpecialities} options={({ route }) => ({ title: route.params?.category })} />
+        <Stack.Screen name="ProfileDetail" component={ProfileDetail} options={{headerShown: false}} />
         <Stack.Screen
           name="Wallet"
           component={Wallet}

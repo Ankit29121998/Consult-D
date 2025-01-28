@@ -1,7 +1,8 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { View, TextInput, StyleSheet, Text ,TouchableOpacity} from 'react-native';
 
 const CommentInput = ({navigation}) => {
+  const [comment,setComment]=useState('');
   return (
     <View style={styles.container}>
       <TextInput
@@ -10,8 +11,15 @@ const CommentInput = ({navigation}) => {
         numberOfLines={8} 
         placeholder="Write something  here..."
         placeholderTextColor="#6E8294"
+        value={comment}
+        onChange={(value)=>setComment(value)}
       />
-     <TouchableOpacity onPress={() => navigation.goBack()} style={styles.submitButton} >
+     <TouchableOpacity onPress={() => navigation.goBack()} 
+       disabled={comment.length === 0}style={[
+          styles.submitButton,
+          comment.length === 0 && styles.disabledButton,
+        
+        ]}>
              <Text style={styles.label} >Submit</Text>
     </TouchableOpacity>
     </View>
@@ -31,9 +39,9 @@ const styles = StyleSheet.create({
     borderColor: '#C2C8CC', // Blue border
     borderWidth: 1,
     borderRadius: 10,
-    padding: 10,
+    padding: 16,
     textAlignVertical: 'top', 
-    fontSize: 14, 
+    fontSize: 16, 
     color: '#6E8294',
     backgroundColor:'#C2C8CC'
   },
@@ -48,6 +56,9 @@ const styles = StyleSheet.create({
   label:{
     color:'#FFFFFF',
     fontSize:16,
+  },
+  disabledButton: {
+    backgroundColor: 'gray',
   }
 });
 
